@@ -1,0 +1,414 @@
+ :root{
+    --primary-color:#f1c40f;
+    --white-color:white ;
+    --lighte-color: #333;
+
+    --box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+.login-container {
+    background-color: var(--white-color);
+    padding-left: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+    margin-left: 30rem;
+    margin-top: 12rem;
+    h1 {
+        margin-left: 5.8rem;
+        color: var(--primary-color);
+    }
+    form div {
+        margin-bottom: 1.7rem;
+    }   
+    label {
+        display: block;
+        font-weight: bold;
+        text-align: center;
+    }
+    input {
+        width: 240px;
+        padding: 9px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+       
+    }
+    button {
+        width: 100px;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 6rem;
+    }
+    p {
+        color: red;
+        text-align: center;
+    } 
+}
+.sidebar{
+    width: 280px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul li {
+        margin-top: 2rem;
+        background-color:var(--lighte-color);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    ul li a {
+        display: block;
+        padding: 12px;
+        color: var(--white-color);
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    ul li a:hover {
+        background-color: var(--lighte-color);
+    }
+}
+.main-content {
+    margin-left: 500px;
+    margin-top: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form-book{
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    .label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    .input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+    
+    .input:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    .btn-booking {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+}
+.exiting{
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+    button[name="updateTour"] {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    button[name="deleteTour"] {
+        background-color: var(--lighte-color);
+        color: var(--white-color);
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+}
+
+
+
+
+.form-box {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+
+    h2{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    
+    .btn-add {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    
+    /* Placeholder Styling */
+    ::placeholder {
+        color: var(--lighte-color);
+        opacity: 0.6;
+    }
+}
+.table-service {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, .table-service td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        font-weight: bold;
+    }
+   
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 18px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+    input[type="text"]:focus, textarea:focus {
+        border-color:var(--lighte-color);
+        outline: none;
+    }
+    .btn-edit {
+        background-color: var(--lighte-color);
+        color: var(--white-color);
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+        margin-right: 5px;
+    }
+    .btn-delete {
+        background-color:var(--primary-color);
+        color: var(--white-color);
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+    }
+    
+}
+
+.dashboard-container {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    h1 {
+        color: var(--primary-color);
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--lighte-color);
+    }
+    
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    textarea:focus,
+    input[type="file"]:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    button {
+        background-color: var(--primary-color);
+        color:var(--white-color);
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    input[type="file"] {
+        padding: 5px;
+    }
+}
+
+.form-destination {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        text-align: center;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--lighte-color);
+    }
+    input[type="text"],
+     textarea,
+    input[type="file"] {
+        width: calc(100% - 20px);
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    textarea {
+        resize: vertical;
+    }
+    button {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+   
+}
+.form-gallery {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: var(--box-shadow);
+    max-width: 500px;
+     select,
+input[type="file"],
+ button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
+}
+h3 {
+    color:var(--lighte-color);
+    margin-top: 30px;
+    font-size: 24px;
+}
+div {
+    display: inline-block;
+    margin: 10px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: var(--box-shadow);
+}
+a {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--lighte-color);
+    text-decoration: none;
+    font-size: 12px;
+}
