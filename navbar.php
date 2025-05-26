@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,19 +19,17 @@ if (isset($_SESSION['user_name'])) {
         </h1>
     ";
 } else {
-    echo "You are not logged in yet.";
+    echo "Vous n'êtes pas encore connecté.";
 }
 ?>
 
     <span class="malg">
-        <img src="image/malgarlogo.png" alt="MALGAR Logo" class="logo">
-        <span class="logo-text">MALGAR</span>
+        <img src="image/logo.png" alt="Logo MALGAR" class="logo">
     </span>
     <nav class="navbar">
-        <a href="home.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'home.php' ? 'active' : ''; ?>">Home</a>
-        <a href="about.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'about.php' ? 'active' : ''; ?>">About</a>
+        <a href="home.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'home.php' ? 'active' : ''; ?>">Accueil</a>
+        <a href="about.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'about.php' ? 'active' : ''; ?>">À propos</a>
         <a href="blogs.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'blogs.php' ? 'active' : ''; ?>">Blogs</a>
-
         <div class="dropdown">
             <a class="droplng">Destination<i class="fas fa-caret-down"></i></a>
             <div class="dropdown-content">
@@ -41,8 +38,8 @@ if (isset($_SESSION['user_name'])) {
             </div>
         </div>
         <a href="contact.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : ''; ?>">Contact</a>
-        <a href="booking.php"  class="<?php echo basename($_SERVER['PHP_SELF']) == 'booking.php' ? 'active' : ''; ?>">Booking</a>
-        <a href="inscrit.php" class="btn-register">Register</a>
+        <a href="booking.php"  class="<?php echo basename($_SERVER['PHP_SELF']) == 'booking.php' ? 'active' : ''; ?>">Réservation</a>
+        <a href="inscrit.php" class="btn-register">S'inscrire</a>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>

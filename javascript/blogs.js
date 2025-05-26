@@ -1,4 +1,4 @@
-// Function to check if an element is in the viewport
+
 function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -61,7 +61,7 @@ document.getElementById("experience-form").addEventListener("submit", function(e
             experienceList.prepend(newExperience);
             document.getElementById("experience-form").reset(); 
         } else {
-            alert(data.error); // عرض رسالة خطأ إذا كانت هناك مشكلة
+            alert(data.error); 
         }
     })
     .catch(error => console.error("⚠ Error:", error));

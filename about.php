@@ -4,10 +4,10 @@ if (!isset($_SESSION['users_id'])) {
     header("Location: home.php"); 
     exit();
 }
-$user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
+$user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Invité";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@ $user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
 <?php include('navbar.php'); ?>
     <div class="heading" style="background:linear-gradient(rgba(17,17,17,.7),rgba(17,17,17,.7)), url(image/about.jpg) no-repeat;">
 
-        <h1>About Us</h1>
+        <h1>À propos de nous</h1>
     </div>
 
     <section class="about" id="about">
@@ -37,26 +37,26 @@ $user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
             </div>
         </div>
         <div class="content">
-    <span>Why Choose Us?</span>
-    <h3>Nature's Beauty Awaits You</h3>
-    <p>Discover Morocco's enchanting cities and explore their rich history! Join us on an unforgettable journey where tradition meets modernity, and natural beauty blends with cultural heritage.</p>
+    <span>Pourquoi choisir notre agence ?</span>
+    <h3>La beauté de la nature vous attend</h3>
+    <p>Découvrez les villes envoûtantes du Maroc et explorez leur histoire riche ! Rejoignez-nous pour un voyage inoubliable où tradition et modernité se rencontrent, et où la beauté naturelle se mêle au patrimoine culturel.</p>
     
     <div class="stats">
         <div class="stat-item">
             <h4>5000+</h4>
-            <p>Satisfied Tourists</p>
+            <p>Touristes satisfaits</p>
         </div>
         <div class="stat-item">
             <h4>10+</h4>
-            <p>Years of Experience</p>
+            <p>Années d'expérience</p>
         </div>
         <div class="stat-item">
             <h4>100+</h4>
-            <p>Tour Destinations Across Morocco</p>
+            <p>Destinations touristiques à travers le Maroc</p>
         </div>
     </div>
     
-    <a href="#contact" class="cta-btn">Book Your Tour Now</a>
+    <a href="booking.php" class="cta-btn">Réservez  maintenant</a>
 </div>
 
     </section>
@@ -65,7 +65,7 @@ $user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
 
 require 'db.php';
 
-// Fetch reviews from the database
+// Récupérer les avis depuis la base de données
 $sql = "SELECT r.rating, r.comment, r.created_at, u.name 
         FROM reviews r
         JOIN users u ON r.users_id = u.users_id
@@ -83,7 +83,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <p>My Morocco trip was amazing thanks to the Moroccan Tourism Agency...</p>
+            <p>Mon voyage au Maroc était incroyable grâce à l'agence de tourisme marocaine...</p>
             <h3>John Deo</h3>
             <span>2024-01-09   10:23:30</span>
         </div>
@@ -93,7 +93,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 </div>
-            <p>I commend the Moroccan Tourism Agency for organizing my trip...</p>
+            <p>Je félicite l'agence de tourisme marocaine pour l'organisation de mon voyage...</p>
             <h3>Anna</h3>
             <span>2024-02-19   18:23:30</span>
         </div>
@@ -105,7 +105,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <i class="fas fa-star"></i>
                 
             </div>
-            <p>The experience was unforgettable, from the landscapes to the local culture...</p>
+            <p>L'expérience était inoubliable, des paysages à la culture locale...</p>
             <h3>Sam</h3>
             <span>2024-05-29   01:13:22</span>
         </div>
@@ -117,7 +117,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <p>A decent experience, but some improvements could be made...</p>
+            <p>Une expérience correcte, mais quelques améliorations pourraient être apportées...</p>
             <h3>Emily</h3>
             <span>2024-11-23   10:02:38</span>
         </div>
@@ -128,7 +128,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
             </div>
-            <p>I had a wonderful time discovering Morocco’s beauty...</p>
+            <p>J'ai passé un moment merveilleux à découvrir la beauté du Maroc...</p>
             <h3>Michael</h3>
             <span>2025-01-09   12:30:30</span>
         </div>
@@ -139,6 +139,7 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo '<div class="stars">';
                 
              
+            
                 for ($i = 0; $i < $review['rating']; $i++) {
                     echo '<i class="fas fa-star"></i>';
                 }
@@ -177,9 +178,6 @@ $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <?php include 'footer.php'?>
-
-
-
 
 
     <script src="javascript/about.js"></script>

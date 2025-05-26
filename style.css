@@ -1,12 +1,11 @@
 :root{
-    --primary-color:#f1c40f;
     --white-color:white ;
     --aqua-gradient:linear-gradient(to right,#2696d6, #000000);
+    
     --aqua-colore:#2696d6;
     --lighte-color: #252525;
-    --black-color:#000000f1;
+    --black-color:#000000f7;
     --box-shadow: 0px 3px 9px #2696d6;
-    
 }
 *{
     font-family: 'poppins',sans-serif;
@@ -32,19 +31,40 @@ html{
     }
 }
 body {
-    background: var(--black-color);
+    background-image:url(image/images.jpeg) ;
     overflow-x: hidden;
 }
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 100;
+    border: none;
+    outline: none;
+    background: #34db4a;
+    color: white;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    display: none;
+    transition: background-color 0.3s;
+  }
+  #scrollToTopBtn:hover {
+    background-color: #2980b9;
+  }
+  
 /*home*/
 .header {
     background-color:transparent;
-    backdrop-filter: blur(3rem);
+    backdrop-filter: blur(99rem);
     border-bottom: 2px solid var(--aqua-colore);
     color: var(--white-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.9rem;
     border-radius: .6rem;
     position: fixed;
     width: 100%;
@@ -55,24 +75,18 @@ body {
     align-items: center;
     transition: transform 0.3s ease;
 .logo {
-    width: 6rem; 
-    height: 5rem;
+    width: 10rem; 
+    height: 9rem;
    position: absolute;
    left: 11rem;
+   top: -1.2rem;
 }
-.logo-text {
-    font-size: 1.5rem; 
-    color: var(--aqua-colore); 
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif; 
-     position: absolute;
-     left: 16rem;
-}
+
 
 }
 .navbar {
     display: flex;
-    gap: 4rem;
+    gap: 2rem;
     padding-right: 4rem;
     position: relative;
 }
@@ -82,7 +96,7 @@ body {
     text-decoration: none;
     font-size: 14px;
     transition: transform 0.4s ease;
-    margin-right: 2vh;
+    margin-right: 4vh;
 }
 .navbar a.active {
     color: var(--aqua-colore);
@@ -120,7 +134,7 @@ body {
     display: none;
     position: absolute;
     background-color: var(--lighte-color);
-    min-width: 160px;
+    min-width: 200px;
     box-shadow:var(--box-shadow);
     z-index: 1;
 }
@@ -136,11 +150,9 @@ body {
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {
     background-color: var(--lighte-color);
     color: var(--white-color);
-    
 }
 .sub-dropdown {
     position: relative;
@@ -223,7 +235,7 @@ body {
             animation:fadeIn .2s linear backwards .6s;
             color: var(--white-color);
             background: var(--aqua-gradient);
-            padding: .5rem;
+            padding: .9rem;
             border-radius: 3rem;
             margin-left: 50%;
         }
@@ -846,9 +858,10 @@ body {
 }
 
 #prevBtn {
-    right: 76rem;
+    right: 84rem;
     top: 2rem;
     color: var(--aqua-colore);
+    background: none;
 
 }
 
@@ -856,6 +869,7 @@ body {
     right: 1rem;
     top: 2rem;
     color: var(--aqua-colore);
+    background: none;
 }
 #reviewForm {
     position: relative;
@@ -968,8 +982,8 @@ body {
     height: auto;
 }
 
-.read-more-btn {
-    background-color: transparent;
+.read-more-btn{
+    background: transparent;
     color: var(--aqua-colore);
     padding: 10px;
     border: none;
@@ -1133,8 +1147,9 @@ input[type="file"] {
     display: flex; 
     gap: 1px;
     margin-top: 50px;
-    margin-left: 90px;
+    margin-left: 170px;
     overflow: hidden;
+   
 }
 .contact-container h3{
     text-align: center;
@@ -1142,24 +1157,40 @@ input[type="file"] {
 .form-container, .contact-info {
     flex: 2; 
     margin-left: .1rem;
+    
 }
 
 .form-container {
     background:transparent;
     border:2px solid var(--aqua-colore);
-    padding: 20px;
-    max-width: 38rem;
-    max-height: 40rem;
-    border-radius: 8px;
-    margin-left: 5rem;
+    padding: 10px;
+    max-width: 25rem;
+    max-height: 30rem;
+    border-radius: 3rem;
+    margin-left: .5rem;
     box-shadow: var(--box-shadow);
+    button {
+    background:var(--aqua-gradient);
+    width: 80%;
+    color: white;
+    border: 2px solid var(--aqua-colore);
+    padding: 19px 39px;
+    cursor: pointer;
+    border-radius: 3rem;
+    margin-left: 3rem;
+    transition: transform 0.3s ease;
+}
+button:hover {
+    transform: scale(1.1);
+}
+
 }
 
 .contact-info {
     background:var(--aqua-gradient);
     padding: 20px;
-    max-width: 38rem;
-    border-radius: 8px;
+    max-width: 25rem;
+     border-radius: 3rem;
     border: 2px solid var(--aqua-colore);
     row-gap: 3rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -1177,7 +1208,7 @@ input[type="file"] {
 }
 .contact-info p{
    padding-top:3.7rem ;
-   padding-left: 3rem;
+   padding-left: 2rem;
    color: var(--white-color);
 }
 .contact-info p b{
@@ -1188,17 +1219,18 @@ input[type="file"] {
     width: 18rem; 
     height: 14rem;
     position: absolute;
-    left: 9rem; 
-    top: 18.9rem;
+    left: 3rem; 
+    top: 17.9rem;
 
 }
 .form-container input,.form-container  textarea {
     width: 100%;
     padding: 20px;
     margin: 10px 0;
-    border-radius: 5px;
+    border-radius: 3rem;
     border: 1px solid var(--aqua-colore);
     background: transparent;
+    color: var(--white-color);
    &::placeholder{
     color: var(--white-color);
     opacity: 0.6;
@@ -1206,19 +1238,6 @@ input[type="file"] {
    }
 }
 
-button {
-    background:var(--aqua-gradient);
-    color: white;
-    border: 2px solid var(--aqua-colore);
-    padding: 19px 39px;
-    cursor: pointer;
-    border-radius: 5rem;
-    margin-left: 15rem;
-    transition: transform 0.3s ease;
-}
-button:hover {
-    transform: scale(1.1);
-}
 
 /*booking*/
 .booking-container {
@@ -1239,6 +1258,8 @@ h1 {
     flex-wrap: nowrap; 
     overflow-x: auto;
     gap: 10px;
+    border-radius: 2rem;
+  
 }
 .form-section {
     flex: 1;
@@ -1246,9 +1267,10 @@ h1 {
     margin: 5px;
     padding: 15px;
     background: transparent;
-    border-radius: 5px;
+    border-radius: 2rem;
     box-shadow: var(--box-shadow);
     overflow-x: hidden;
+  
 }
 .form-section h2 {
     font-size: 20px;
@@ -1256,25 +1278,27 @@ h1 {
     text-align: center;
     margin-bottom: 10px;
 }
-label {
+.form-section label {
     display: block;
     text-align: left;
     margin-top: 10px;
     font-weight: bold;
+    font-size: 13px;
+    text-align: center;
     color: var(--white-color);
 }
-input, select, textarea {
+.form-section input, .form-section select, .form-section textarea {
     width: 100%;
     padding: 15px;
     margin-top: 5px;
     border: 1px solid var(--aqua-colore);
     background-color: transparent;
-    border-radius: 4px;
+    border-radius: 4rem;
     font-size: 14px;
     color: var(--white-color);
-   
+
 }
- select{
+.form-section select{
     background: var(--aqua-colore);
 }
 #creditCardDetails, #bankTransferDetails {
@@ -1283,15 +1307,15 @@ input, select, textarea {
 }
 .confirm-btn {
     width: 50%;
-    background-color: var(--primary-color);
+    background: var(--aqua-colore);
     color: var(--white-color);
     padding: 10px;
-    margin-top: 2px;
     border: none;
     border-radius: 7px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 15px;
+    margin-left: 7rem;
     transition: transform 0.3s ease;
 }
 .confirm-btn:hover {
@@ -1418,23 +1442,23 @@ input, select, textarea {
         border-radius: 3rem;
         outline: none;
         text-align: center;
+        color: var(--white-color);
         &::placeholder{
             text-align: center;
-            color: var(--white-color);
             opacity: 0.5;
         }
     }
 
     button {
         padding: 9px 40px;
-        background-color: transparent;
+        background: transparent;
         color:var(--lighte-color);
         border: none;
         border-radius: 4px;
         cursor: pointer;
         position: absolute;
-        right:18rem;
-        top:1.2rem;
+        right:19rem;
+        top:0.8rem;
         font-size: 16px;
         transition: background-color 0.3s;
     }
@@ -1564,6 +1588,32 @@ input, select, textarea {
     font-weight: bold;
     cursor: pointer;
 }
+        .dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+}
+
+.dropbtnn {
+  margin: 0;
+  color: black;
+  color: white;
+}
+
+.dropdown-contentt {
+  display: none;
+  position: absolute;
+  background-color:#2696d6 ;
+  min-width: 190px;
+  z-index: 100;
+  padding: 10px 0;
+}
+
+
+.dropdown:hover .dropdown-contentt {
+  display: block;
+}
 /* @media (max-width:991px){
     html{
         font-size: 70%;
@@ -1595,7 +1645,7 @@ input, select, textarea {
         background-color: rgb(60, 0, 255);
     }
 } */
-@media  (max-width: 1200px){
+/* @media  (max-width: 1200px){
     .navbar {
         gap: 2.9rem;
         padding-left: 15rem;font-size: 55%;
@@ -1835,4 +1885,115 @@ input, select, textarea {
         .dropbtn {
             font-size: 0.9rem;
         }
-    }
+    } */
+     @media (max-width: 1200px) {
+       html{
+        font-size: 10px;
+       }
+  .header {
+    padding: 1rem;
+    background-color: rgb(0, 255, 174);
+  }
+
+  .navbar {
+    gap: 2rem;
+    padding: 1.5rem;
+    font-size: 12px;
+  }
+
+  .home .slide .content h3 {
+    font-size: 5vw;
+  }
+  .malg .logo{
+        margin-left: -3rem;
+  }
+  .btn {
+    margin-left: 0;
+    width: 10rem;
+    height: 5rem;
+    padding-left: 14rem;
+  }
+}
+
+@media (max-width: 768px) {
+    .header {
+    padding: 1rem;
+    background-color: rgb(255, 0, 136);
+  }
+  #menu-btn {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--black-color);
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: red;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .malg .logo {
+    position: static;
+    margin: 0 auto;
+    height: 10rem;
+    width: 15rem;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .services-container,
+  .offers-container {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    margin-left: 0;
+    padding: 40rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home .slide .content h3 {
+    font-size: 6vw;
+  }
+
+  .dropbtn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .content span {
+    font-size: 1.2rem;
+  }
+
+  .content h3 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  #scrollToTopBtn {
+    padding: 10px 12px;
+    font-size: 16px;
+    bottom: 20px;
+    right: 20px;
+  }
+}

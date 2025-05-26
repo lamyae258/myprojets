@@ -2,7 +2,7 @@
 document.getElementById('paymentMethod').addEventListener('change', function() {
     var paymentMethod = this.value;
     
-    // Hide all payment details
+   
     document.getElementById('creditCardDetails').style.display = 'none';
     document.getElementById('bankTransferDetails').style.display = 'none';
     if (paymentMethod === 'creditCard') {
@@ -14,7 +14,7 @@ document.getElementById('paymentMethod').addEventListener('change', function() {
 /*price*/
 function updateTourPrice() {
     var selectedOption = document.getElementById('tourName').options[document.getElementById('tourName').selectedIndex];
-    var pricePerPerson = parseFloat(selectedOption.getAttribute('data-price')); // السعر لكل شخص
+    var pricePerPerson = parseFloat(selectedOption.getAttribute('data-price')); 
 
     var numPersons = parseInt(document.getElementById('tourPersons').value);
 

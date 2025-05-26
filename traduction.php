@@ -21,16 +21,14 @@
         document.getElementById('translate-btn').addEventListener('click', function() {
             var textToTranslate = document.getElementById('text-to-translate').innerText;
             var targetLanguage = document.getElementById('language-select').value;
-            
-            // Microsoft Translator API endpoint
             var endpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=' + targetLanguage;
 
             fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', // استخدم الـ API Key هنا
-                    'Ocp-Apim-Subscription-Region': 'YOUR_REGION' // استخدم المنطقة المناسبة لك
+                    'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', 
+                    'Ocp-Apim-Subscription-Region': 'YOUR_REGION' 
                 },
                 body: JSON.stringify([{ 'Text': textToTranslate }])
             })

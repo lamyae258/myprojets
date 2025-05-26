@@ -11,18 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_city'])) {
     $cityDescription = $_POST['city_description'];
     $citySlug = strtolower(str_replace(' ', '-', $cityName));
     
-    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/lamyae/uploadeAdmin/";
+    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/myprojet/uploadeAdmin/";
     $fileName = basename($_FILES["city_image"]["name"]);
     $targetFile = $targetDir . $fileName;
     $imageFileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
     $allowedTypes = ['jpg', 'jpeg', 'png'];
     if (getimagesize($_FILES["city_image"]["tmp_name"]) === false || !in_array($imageFileType, $allowedTypes)) {
-        echo "❌ The file is not a valid image.";
+        echo "❌ Le fichier n'est pas une image valide.";
         exit();
     }
     if (!move_uploaded_file($_FILES["city_image"]["tmp_name"], $targetFile)) {
-        echo "❌ An error occurred while uploading the image.";
+        echo "❌ Une erreur s'est produite lors du téléchargement de l'image.";
         exit();
     }
     
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_city'])) {
         ':city_image' => $imagePath
     ]);
 
-    echo "✅ City added successfully!";
+    echo "✅ Ville ajoutée avec succès !";
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_city'])) {
     $cityId = $_POST['city_id'];
@@ -58,44 +58,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_city'])) {
         $stmtDelete = $pdo->prepare($sqlDelete);
         $stmtDelete->execute([':city_id' => $cityId]);
 
-        echo "✅ City deleted successfully!";
+        echo "✅ Ville supprimée avec succès !";
     }
 }
-
-// 🔎 Fetch Data
 $sql = "SELECT * FROM coastal_cities";
 $stmt = $pdo->query($sql);
 $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Coastal Cities</title>
+    <title>Gérer les villes côtières</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     
     <form action="" method="POST" enctype="multipart/form-data" class="form-destination">
-    <h2>Add Coastal City</h2>
-        <label>City Name:</label>
+    <h2>Ajouter une ville côtière</h2>
+        <label>Nom de la ville :</label>
         <input type="text" name="city_name" required><br>
-        <label>City Description:</label>
+        <label>Description de la ville :</label>
         <textarea name="city_description" required></textarea><br>
-        <label>City Image:</label>
+        <label>Image de la ville :</label>
         <input type="file" name="city_image" required><br>
-        <button type="submit" name="add_city">Add</button>
+        <button type="submit" name="add_city">Ajouter</button>
     </form>
 
-    <h2>List of Coastal Cities</h2>
+    <h2>Liste des villes côtières</h2>
     <table border="1">
         <tr>
-            <th>City Name</th>
+            <th>Nom</th>
             <th>Slug</th>
             <th>Description</th>
             <th>Image</th>
-            <th>Delete</th>
+            <th>Supprimer</th>
         </tr>
         <?php foreach ($cities as $city): ?>
         <tr>
@@ -108,7 +106,7 @@ $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <form action="" method="POST">
                     <input type="hidden" name="city_id" value="<?= $city['city_id'] ?>">
-                    <button type="submit" name="delete_city" onclick="return confirm('Are you sure?')">Delete</button>
+                    <button type="submit" name="delete_city" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
                 </form>
             </td>
         </tr>

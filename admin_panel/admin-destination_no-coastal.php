@@ -1,4 +1,3 @@
-admin-destination_no-coastal.php
 <?php
 session_start();
 if (!isset($_SESSION['admin_logged_in'])) {
@@ -8,28 +7,29 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
 require '../db.php';
 
+// إضافة مدينة
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_city'])) {
     $cityName = $_POST['city_name'];
     $cityDescription = $_POST['city_description'];
     $citySlug = strtolower(str_replace(' ', '-', $cityName));
     
-    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/lamyae/uploadeAdmin/";
+    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/myprojet/uploadeAdmin/"; 
     $fileName = basename($_FILES["city_image"]["name"]);
     $targetFile = $targetDir . $fileName;
     $imageFileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     
-    $allowedTypes = ['jpg', 'jpeg', 'png'];
+    $allowedTypes = ['jpg', 'jpeg', 'png','webp'];
     if (getimagesize($_FILES["city_image"]["tmp_name"]) === false || !in_array($imageFileType, $allowedTypes)) {
-        echo "Invalid file type.";
+        echo "Type de fichier invalide.";
         exit();
     }
     
     if (!move_uploaded_file($_FILES["city_image"]["tmp_name"], $targetFile)) {
-        echo "Error uploading file.";
+        echo "Erreur lors du téléchargement du fichier.";
         exit();
     }
     
-    $imagePath = "/lamyae/uploadeAdmin/" . $fileName;
+    $imagePath = "/myprojet/uploadeAdmin/" . $fileName;
     
     $sql = "INSERT INTO non_coastal_cities (city_name, city_slug, city_description, city_image) 
             VALUES (:city_name, :city_slug, :city_description, :city_image)";
@@ -41,12 +41,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_city'])) {
         ':city_image' => $imagePath
     ]);
 
-    echo "City added successfully.";
+    echo "Ville ajoutée avec succès.";
 }
 
+// حذف مدينة
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_city'])) {
     $cityId = $_POST['city_id'];
 
+    // حذف الصور المرتبطة أولاً
+    $deleteImages = $pdo->prepare("SELECT image_path FROM city_images_nocoastal WHERE city_id = :city_id");
+    $deleteImages->execute([':city_id' => $cityId]);
+    $images = $deleteImages->fetchAll();
+
+    foreach ($images as $img) {
+        $imgPath = $_SERVER['DOCUMENT_ROOT'] . $img['image_path'];
+        if (file_exists($imgPath)) {
+            unlink($imgPath); // حذف الصورة من السيرفر
+        }
+    }
+
+    // حذف الصور من جدول city_images_nocoastal
+    $stmtDeleteImages = $pdo->prepare("DELETE FROM city_images_nocoastal WHERE city_id = :city_id");
+    $stmtDeleteImages->execute([':city_id' => $cityId]);
+
+    // جلب وحذف صورة المدينة الرئيسية
     $sql = "SELECT city_image FROM non_coastal_cities WHERE city_id = :city_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':city_id' => $cityId]);
@@ -58,47 +76,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_city'])) {
             unlink($imagePath);
         }
 
+        // حذف المدينة
         $sqlDelete = "DELETE FROM non_coastal_cities WHERE city_id = :city_id";
         $stmtDelete = $pdo->prepare($sqlDelete);
         $stmtDelete->execute([':city_id' => $cityId]);
 
-        echo "City deleted successfully.";
+        echo "Ville supprimée avec succès.";
     }
 }
 
+// جلب المدن
 $sql = "SELECT * FROM non_coastal_cities";
 $stmt = $pdo->query($sql);
 $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Non-Coastal Cities</title>
+    <title>Gérer les Villes Non-Sociales</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     
-    <form action="" method="POST" enctype="multipart/form-data"  class="form-destination">
-       <h2>Add Non-Coastal City</h2>
-        <label>City Name:</label>
+    <form action="" method="POST" enctype="multipart/form-data" class="form-destination">
+       <h2>Ajouter une Ville Non-Sociale</h2>
+        <label>Nom de la Ville :</label>
         <input type="text" name="city_name" required><br>
-        <label>City Description:</label>
+        <label>Description de la Ville :</label>
         <textarea name="city_description" required></textarea><br>
-        <label>City Image:</label>
+        <label>Image de la Ville :</label>
         <input type="file" name="city_image" required><br>
-        <button type="submit" name="add_city">Add</button>
+        <button type="submit" name="add_city">Ajouter</button>
     </form>
 
-    <h2>List of Non-Coastal Cities</h2>
+    <h2>Liste des Villes Non-Sociales</h2>
     <table border="1">
         <tr>
-            <th>City Name</th>
+            <th>Nom de la Ville</th>
             <th>Slug</th>
             <th>Description</th>
             <th>Image</th>
-            <th>Delete</th>
+            <th>Supprimer</th>
         </tr>
         <?php foreach ($cities as $city): ?>
         <tr>
@@ -111,7 +131,7 @@ $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <form action="" method="POST">
                     <input type="hidden" name="city_id" value="<?= $city['city_id'] ?>">
-                    <button type="submit" name="delete_city" onclick="return confirm('Are you sure?')">Delete</button>
+                    <button type="submit" name="delete_city" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
                 </form>
             </td>
         </tr>

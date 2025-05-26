@@ -102,9 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // تحديث الـ slider بالـ التعليق الجديد
-                updateSliderWithNewComment(data.reviews[0]); // نضيف أول تعليق من البيانات اللي جينا
-                reviewForm.reset();
+                updateSliderWithNewComment(data.reviews[0]); 
             } else {
                 alert(data.message);
             }
@@ -114,8 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("حدث خطأ أثناء إرسال التعليق.");
         });
     });
-
-    // هذه الدالة تقوم بإضافة التعليق الجديد إلى الـ slider
     function updateSliderWithNewComment(review) {
         const reviewCard = document.createElement("div");
         reviewCard.classList.add("review-card");
@@ -123,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="stars">${"★".repeat(review.rating)}</div>
             <p>${review.comment}</p>
         `;
-        reviewsContainer.insertBefore(reviewCard, reviewsContainer.firstChild); // نضيف التعليق الجديد في البداية
+        reviewsContainer.insertBefore(reviewCard, reviewsContainer.firstChild);
     }
 });
 

@@ -1,9 +1,11 @@
- :root{
-    --primary-color:#f1c40f;
-    --white-color:white ;
-    --lighte-color: #333;
+:root{
 
-    --box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    --white-color:white ;
+    --aqua-gradient:linear-gradient(to right,#2696d6, #000000);
+    --aqua-colore:#2696d6;
+    --lighte-color: #252525;
+    --black-color:#000000f7;
+    --box-shadow: 0px 3px 9px #2696d6;
 }
 .login-container {
     background-color: var(--white-color);
@@ -15,7 +17,7 @@
     margin-top: 12rem;
     h1 {
         margin-left: 5.8rem;
-        color: var(--primary-color);
+        color: var(--aqua-colore);
     }
     form div {
         margin-bottom: 1.7rem;
@@ -35,7 +37,7 @@
     button {
         width: 100px;
         padding: 10px;
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: white;
         border: none;
         border-radius: 4px;
@@ -50,7 +52,7 @@
 }
 .sidebar{
     width: 280px;
-    background: var(--primary-color);
+    background: var(--aqua-colore);
     color: var(--white-color);
     padding: 20px;
     box-sizing: border-box;
@@ -112,11 +114,11 @@
     }
     
     .input:focus {
-        border-color: var(--primary-color);
+        border-color: var(--aqua-colore);
         outline: none;
     }
     .btn-booking {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: var(--white-color);
         padding: 10px 20px;
         border: none;
@@ -128,11 +130,11 @@
 }
 .exiting{
     h2 {
-        color: var(--primary-color);
+        color: var(--aqua-colore);
         margin-bottom: 15px;
     }
     button[name="updateTour"] {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: var(--white-color);
         padding: 8px 16px;
         border: none;
@@ -180,12 +182,12 @@
         transition: border-color 0.3s;
     }
     input:focus, textarea:focus {
-        border-color: var(--primary-color);
+        border-color: var(--aqua-colore);
         outline: none;
     }
     
     .btn-add {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: var(--white-color);
         padding: 12px;
         border: none;
@@ -199,7 +201,7 @@
     
     /* Placeholder Styling */
     ::placeholder {
-        color: var(--lighte-color);
+        color: var(--lighte-colore);
         opacity: 0.6;
     }
 }
@@ -214,7 +216,7 @@
         text-align: left;
     }
     th {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: var(--white-color);
         font-weight: bold;
     }
@@ -244,7 +246,7 @@
         margin-right: 5px;
     }
     .btn-delete {
-        background-color:var(--primary-color);
+        background-color:var(--aqua-colore);
         color: var(--white-color);
         padding: 8px 12px;
         border: none;
@@ -268,7 +270,7 @@
     margin: 20px auto;
     box-sizing: border-box;
     h1 {
-        color: var(--primary-color);
+        color: var(--aqua-colore);
         font-size: 24px;
         margin-bottom: 20px;
         text-align: center;
@@ -297,11 +299,11 @@
     input[type="text"]:focus,
     textarea:focus,
     input[type="file"]:focus {
-        border-color: var(--primary-color);
+        border-color: var(--aqua-colore);
         outline: none;
     }
     button {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color:var(--white-color);
         padding: 12px;
         border: none;
@@ -328,7 +330,7 @@
     h2 {
         font-size: 24px;
         margin-bottom: 20px;
-        color: var(--primary-color);
+        color: var(--aqua-colore);
         text-align: center;
     }
     label {
@@ -353,7 +355,7 @@
         resize: vertical;
     }
     button {
-        background-color: var(--primary-color);
+        background-color: var(--aqua-colore);
         color: var(--white-color);
         padding: 12px 20px;
         border: none;
@@ -383,7 +385,7 @@ input[type="file"],
     box-sizing: border-box;
 }
 button {
-    background-color: var(--primary-color);
+    background-color: var(--aqua-colore);
     color: var(--white-color);
     cursor: pointer;
 }
@@ -411,4 +413,103 @@ a {
     color: var(--lighte-color);
     text-decoration: none;
     font-size: 12px;
+}
+ h2{
+        margin-bottom: 10px; 
+        color: var(--aqua-colore);
+        text-align: center;
+     }
+.manage_hotel{
+    margin-bottom: 30px; 
+    border: 1px solid #ccc;
+     padding: 20px; 
+     margin-left: 30rem;
+     border-radius: 10px; 
+     max-width: 600px;
+     
+    
+ input, select 
+ {
+     width: 100%; 
+     padding: 8px;
+      margin-top: 5px; 
+      margin-bottom: 15px;
+     }
+     .sub{
+        background-color: var(--aqua-colore);
+     }
+}
+.table{
+    width: 100%;
+     border-collapse: collapse;
+      margin-top: 20px;
+      table, th, td { 
+        border: 1px solid #ccc;
+     }
+     th, td {
+         padding: 10px;
+          text-align: center; 
+        }
+        img { 
+            max-width: 100px;
+             border-radius: 5px;
+             }
+         .actions a {
+             margin: 0 5px;
+              text-decoration: none;
+               font-weight: bold; 
+               background: var(--aqua-gradient);
+               padding: 1rem;
+               color: var(--white-color);
+            }
+}
+h2 {
+    text-align: center;
+    color: var(--aqua-color);
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    background: var(--white-color);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+select:focus, input[type="file"]:focus {
+    border-color: var(--aqua-color);
+    outline: none;
+}
+
+button {
+    background: var(--aqua-gradient);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+    font-size: 16px;
+}
+
+button:hover {
+    box-shadow: var(--box-shadow);
+    transform: scale(1.02);
 }

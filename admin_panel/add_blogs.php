@@ -2,7 +2,7 @@
 require 'db.php';
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    die("User not logged in!");
+    die("Utilisateur non connecté !");
 }
 $author_id = $_SESSION['admin_id'];
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $imagePath = 'uploadeAdmin/' . basename($_FILES['image']['name']);
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
-            echo "Error uploading image!";
+            echo "Erreur lors du téléchargement de l'image !";
             exit;
         }
     }
@@ -26,43 +26,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($title) && !empty($content)) {
         $stmt = $pdo->prepare("INSERT INTO blogs (title, content, image, author_id) VALUES (?, ?, ?, ?)");
         if ($stmt->execute([$title, $content, $imagePath, $author_id])) {
-            echo "Blog post added successfully!";
+            echo "Article de blog ajouté avec succès !";
         } else {
-            echo "Error adding blog post.";
+            echo "Erreur lors de l'ajout de l'article de blog.";
         }
     } else {
-        echo "Invalid input!";
+        echo "Entrée invalide !";
     }
 }
 ?>
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Add a New Blog Post</title>
+    <title>Ajouter un nouvel article de blog</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class="dashboard-container">
-        <h1>Add a New Blog Post</h1>
+        <h1>Ajouter un nouvel article de blog</h1>
         <form action="add_blogs.php" method="post" enctype="multipart/form-data">
             <div>
-                <label for="title">Title</label>
+                <label for="title">Titre</label>
                 <input type="text" name="title" id="title" required>
             </div>
             <div>
-                <label for="content">Content</label>
+                <label for="content">Contenu</label>
                 <textarea name="content" id="content" rows="5" required></textarea>
             </div>
             <div>
-                <label for="image">Upload Image</label>
+                <label for="image">Téléverser une image</label>
                 <input type="file" name="image" id="image" accept="image/*" required>
             </div>
             <div>
-                <button type="submit">Add Post</button>
+                <button type="submit">Ajouter l’article</button>
             </div>
         </form>
     </div>

@@ -48,27 +48,26 @@ $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel - Manage Services</title>
+    <title>Panneau Admin - Gérer les Services</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-
 <form method="POST" action="" class="form-box" >
-    <h2>Add New Service</h2>
-    <input type="text" name="title" placeholder="Title" required>
-    <input type="text" name="icon" placeholder="FontAwesome Icon (e.g., fas fa-map-marked-alt)" required>
+    <h2>Ajouter un nouveau service</h2>
+    <input type="text" name="title" placeholder="Titre" required>
+    <input type="text" name="icon" placeholder="Icône FontAwesome (ex: fas fa-map-marked-alt)" required>
     <textarea name="description" placeholder="Description" required></textarea>
-    <button type="submit" name="submit" class="btn-add">Add Service</button>
+    <button type="submit" name="submit" class="btn-add">Ajouter le service</button>
 </form>
 <table class="table-service">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Icon</th>
+            <th>Titre</th>
+            <th>Icône</th>
             <th>Description</th>
             <th>Actions</th>
         </tr>
@@ -88,8 +87,8 @@ $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <textarea name="description" required><?php echo htmlspecialchars($service['description']); ?></textarea>
                     </td>
                     <td>
-                        <button type="submit" name="update" class="btn-edit">Update</button>
-                        <a href="admin_services.php?delete=<?php echo $service['service_id']; ?>" class="btn-delete" onclick="return confirm('Are you sure you want to delete this service?');">Delete</a>
+                        <button type="submit" name="update" class="btn-edit">Mettre à jour</button>
+                        <a href="admin_services.php?delete=<?php echo $service['service_id']; ?>" class="btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?');">Supprimer</a>
                     </td>
                 </form>
             </tr>

@@ -1,62 +1,112 @@
 :root{
     --primary-color:#f1c40f;
     --white-color:white ;
-    --lighte-color: #333;
-    --box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    --aqua-gradient:linear-gradient(to right,#2696d6, #000000);
+    --aqua-colore:#0884cdbc;
+    --lighte-color: #252525;
+    --black-color:#000000f1;
+    --box-shadow: 0px 3px 9px #2696d6;
     
 }
 body {
     overflow: hidden;
-    background: url('image/login.jpg'),linear-gradient(hsl(300, 3%, 17%), hsl(270, 1%, 37%));
+    background: url('image/login.jpg'),linear-gradient(hsl(300, 2%, 30%), hsl(270, 1%, 37%));
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     height: 100vh;
 }
-
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background:var(--lighte-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.welcome-screen p{
+    color: var(--white-color);
+}
+.welcome-screen .logo {
+    width: 500px;
+    animation: logo 3s ease infinite;
+}
+@keyframes logo {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
 
 .auth-container {
+    display: none;
     position: relative;
-    background-color: var(--white-color);
-    width: 400px;
-    border: .1rem solid var(--lighte-color);
-    box-shadow: 0 .1rem 1rem var(--lighte-color);
+    background-color: transparent;
+    width: 350px;
+    height: 480px;
+    backdrop-filter: blur(2rem);
+    border: .1rem solid var(--aqua-colore);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     padding: 30px;
-    top: 3rem;
-    left: 25rem;
+    top: .9rem;
+    left: 26rem;
     animation: fadeIn 1s ease-in-out;
-    border-top: 2rem solid var(--primary-color);
-    border-bottom: 2rem solid var(--primary-color);
+   margin-top: 0rem;
+
+ 
 }
-
-
+.auth-container .logo-input{
+    position: absolute;
+    height: 13rem;
+    width:15rem;
+    left: 5rem;
+    top: -2rem;
+}
 .auth-form {
-    display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5rem;
+    margin-left:-2rem;
     justify-content: center;
     height: 400px;
     width: 100%;
     overflow: hidden;
     z-index: 2;
+    transition:all 0.4s ease;
+
     
 }
-
+.auth-container.show{
+    display: flex;
+}
 .form-content {
     position: absolute;
     width: 100%;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;
     transform: translateX(100%);
     transition-delay: 1s;
+    visibility: hidden;
+    pointer-events: none;
+    
+   
 }
 .form-content.active {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 1.4s;
+    visibility: visible;
+    pointer-events: auto;
+   
 }
 
 #login-form.active {
@@ -66,7 +116,9 @@ body {
 #register-form.active {
     transform: translateX(0);
 }
-
+#register-form , #reset-form{
+    margin-top: 1rem;
+}
 #reset-form.active {
     transform: translateX(0);
 }
@@ -75,7 +127,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--lighte-color);
+    color: var(--white-color);
 }
 
 .input-box {
@@ -88,10 +140,8 @@ body {
     margin-left: 48px;
     background: none;
     padding: 10px;
-   background: var(--lighte-color);
-    
-    border-radius: 20px;
-    border-radius: 5px;
+   background: transparent;
+    border-radius: 20rem;
     font-size: 16px;
     outline: none;
     transition: all 0.3s;
@@ -100,38 +150,37 @@ body {
 
     &::placeholder {
         margin-left:-2rem;
-        color:#aaa;
+        color: var(--white-color);
+        opacity: 0.5;
         font-weight: 600;
-        
     }
 }
 
 .input-box input:focus {
-    border-color: var(--lighte-color);
+    border-color: var(--white-color);
     margin-bottom: 9px;
 }
-
 .submit-btn {
     padding: 10px 20px;
-    background: var(--primary-color);
+    background: var(--aqua-gradient);
     color: var(--white-color);
-    border: none;
-    border-radius: 5px;
+    border: 1px solid var(--aqua-colore);
+    border-radius: 9rem;
     font-size: 16px;
     cursor: pointer;
     width: 15rem;
-    margin-left: 7rem;
-    transition: background 0.3s ease;
+    margin-left: 5rem;
+    transition: transform 0.3s ease;
     margin-top: 1.6rem;
 
 }
 
 .submit-btn:hover {
-    background: var(--lighte-color);
+    transform: scale(1.2);
 }
 
 .form-links #forgot-link {
-    color: var(--lighte-color);
+    color: var(--aqua-colore);
     font-weight: 700;
     text-decoration: none;
     display: flex;
@@ -140,16 +189,16 @@ body {
 }
 
 .form-links #register-link {
-    color: var(--lighte-color);
+    color: var(--aqua-colore);
     font-weight: 600;
-    text-decoration: none;
+    text-decoration:none;
     display: flex;
     justify-content: center;
 }
 
 .form-links span {
     text-decoration: none;
-    color: var(--lighte-color);
+    color: var(--white-color);
     display: flex;
     justify-content: center;
     padding-top: 2rem;
@@ -157,7 +206,7 @@ body {
 }
 
 .form-links #login-link {
-    color: var(--lighte-color);
+    color: var(--aqua-colore);
     font-weight: 700;
     text-decoration: none;
     display: flex;
@@ -165,7 +214,7 @@ body {
 }
 
 .form-links #back-to-login {
-    color: var(--lighte-color);
+    color: var(--aqua-colore);
     font-weight: 700;
     text-decoration: none;
     display: flex;
@@ -178,7 +227,7 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.3);
+        transform: scale(0);
     }
 
     to {
@@ -193,11 +242,62 @@ body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 2rem;
-    
-    
-    
 }
-    
+     
+    .form{
+        border: 2px solid var(--aqua-colore);
+        width: 28rem;
+        height: 24rem;
+         backdrop-filter: blur(2rem);
+         margin-left: 33%;
+         margin-top: 7%;
+         label{
+        color: var(--white-color);
+        
+    }
+    .pass_rest{
+        color: var(--white-color);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  position: relative;
+  top: 5rem;
+    }
+    .logo-input{
+         position: absolute;
+    height: 10rem;
+    width:15rem;
+    left: 7rem;
+    top: -2rem;
+    }
+    input{
+        position: relative;
+     width: 80%;
+    top: 6rem;
+    margin-left: 48px;
+    background: none;
+    padding: 10px;
+   background: transparent;
+    border-radius: 20rem;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+    text-align: center;
+    color: var(--white-color);
+    }
+    button{
+     padding: 10px 20px;
+    background: var(--aqua-gradient);
+    color: var(--white-color);
+    border: 1px solid var(--aqua-colore);
+    border-radius: 9rem;
+    font-size: 16px;
+    cursor: pointer;
+    width: 15rem;
+    margin-left: 7rem;
+    transition: transform 0.3s ease;
+    margin-top: rem;
+  }
+    }
 
 @media (max-width: 766px) {
     

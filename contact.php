@@ -4,10 +4,10 @@ if (!isset($_SESSION['users_id'])) {
     header("Location: home.php"); 
     exit();
 }
-$user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
+$user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Invité";
 ?>
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,31 +20,30 @@ $user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
 <body>
 <?php include('navbar.php'); ?>
     <div class="heading" style="background:linear-gradient(rgba(17,17,17,.7),rgba(17,17,17,.7)), url(image/contact.jpg) no-repeat;">
-        <h1>out blogs</h1>
+        <h1>Nos Blogs</h1>
     </div>
 
 <section class="contact">
 <div class="container" >
-    <h2>Contact Us</h2>
+    <h2>Contactez-nous</h2>
 
     <div class="contact-container">
         <div class="form-container">
-        <h3>Get in Touch</h3>
+        <h3>Entrez en Contact</h3>
         <form action="submit_contact.php" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="text" name="name" placeholder="Nom complet" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="phone" placeholder="Phone Number" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Submit</button>
+                <input type="tel" name="phone" placeholder="Numéro de téléphone" required>
+                <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                <button type="submit">Envoyer</button>
             </form>
         </div>
         <div class="contact-info">
-            <h3>Contact Information</h3>
-            <p> <b>Phone:</b> +212 123 456 789</p>
+            <h3>Informations de Contact</h3>
+            <p> <b>Téléphone:</b> +212 123 456 789</p>
             <p> <b>Email:</b> contact@tourismagency.ma</p>
-            <p> <b>Address:</b> Mohammed V Avenue, Casablanca, Morocco</p>
-            <img src="image/malgarlogo.png" alt="">
-           
+            <p> <b>Adresse:</b> Avenue Mohammed V, Casablanca, Maroc</p>
+            <img src="image/logo.png" alt="">
         </div>
     </div>
 </div>
@@ -52,10 +51,7 @@ $user_name = isset($_SESSION['users_name']) ? $_SESSION['users_name'] : "Guest";
 
 <?php include 'footer.php'?>
 
-
-
-
-    <script src="javascript/contact.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="javascript/contact.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

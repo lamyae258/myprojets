@@ -1,16 +1,17 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Panneau d'Administration</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 <?php include 'sidebar.php'; ?>
     <div class="main-content">
-        <h1>Welcome to the Admin Panel</h1>
-        <p>Select one of the sections from the sidebar to manage it.</p>
+        <h1>Bienvenue dans le Panneau d'Administration</h1>
+        <p>Sélectionnez une section dans la barre latérale pour la gérer.</p>
     </div>
 </body>
 </html>

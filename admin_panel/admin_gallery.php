@@ -24,21 +24,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->bindParam(':city_slug', $citySlug);
                 $stmt->bindParam(':image_path', $dbImagePath);
                 $stmt->execute();
-
-            } 
+            }
         } else {
-            echo "⚠️ City not found.";
+            echo "⚠️ Ville non trouvée.";
         }
     } else {
-        echo "⚠️ City ID or image not specified.";
+        echo "⚠️ ID de la ville ou image non spécifiés.";
     }
 }
-
 
 if (isset($_GET['delete_image_id'])) {
     $deleteImageId = $_GET['delete_image_id'];
 
-    $sql = "SELECT image_path FROM city_images WHERE image_id = :image_id"; // ✅ استخدام image_id
+    $sql = "SELECT image_path FROM city_images WHERE image_id = :image_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':image_id', $deleteImageId);
     $stmt->execute();
@@ -50,28 +48,28 @@ if (isset($_GET['delete_image_id'])) {
             unlink($imagePath);
         }
 
-        $sqlDelete = "DELETE FROM city_images WHERE image_id = :image_id"; // ✅ استخدام image_id
+        $sqlDelete = "DELETE FROM city_images WHERE image_id = :image_id";
         $stmtDelete = $pdo->prepare($sqlDelete);
         $stmtDelete->bindParam(':image_id', $deleteImageId);
         $stmtDelete->execute();
 
-        echo "✅ Image deleted successfully!";
-    } 
+        echo "✅ Image supprimée avec succès !";
+    }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage City Images</title>
+    <title>Admin - Gérer les Images des Villes</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 <form method="POST" enctype="multipart/form-data" class="form-gallery">
     <select name="city_id" required>
-        <option value="">Select City</option>
+        <option value="">Sélectionner une ville</option>
         <?php
         $sql = "SELECT * FROM coastal_cities";
         $stmt = $pdo->prepare($sql);
@@ -84,9 +82,10 @@ if (isset($_GET['delete_image_id'])) {
         ?>
     </select>
     <input type="file" name="city_image" required>
-    <button type="submit">Upload Image</button>
+    <button type="submit">Téléverser l’image</button>
 </form>
-<h3>City Images:</h3>
+
+<h3>Images de la ville :</h3>
 <?php
 if (!empty($_GET['city_id'])) {
     $cityId = $_GET['city_id'];
@@ -115,9 +114,9 @@ if (!empty($_GET['city_id'])) {
                         </td>
                         <td>
                             <a href="?delete_image_id=<?= $image['image_id'] ?>&city_id=<?= $cityId ?>" 
-                                onclick="return confirm('Are you sure you want to delete this image?')" 
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')" 
                                 style="color: red; text-decoration: none; background-color: #f8d7da; padding: 5px 10px; border-radius: 5px;">
-                                ❌ Delete
+                                ❌ Supprimer
                             </a>
                         </td>
                     </tr>
@@ -125,13 +124,12 @@ if (!empty($_GET['city_id'])) {
             </tbody>
         </table>
     <?php else: ?>
-        <p>No images found for this city.</p>
+        <p>Aucune image trouvée pour cette ville.</p>
     <?php endif;
 }
 ?>
 
-<!-- ✅ عرض الصور الحديثة -->
-<h3>Recently Added Images:</h3>
+<h3>Images récemment ajoutées :</h3>
 <?php
 $sql = "SELECT * FROM city_images ORDER BY image_id DESC";
 $stmt = $pdo->prepare($sql);
@@ -143,7 +141,7 @@ if ($recentImages): ?>
         <thead>
             <tr>
                 <th>#</th>
-                <th>City</th>
+                <th>Ville</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -167,9 +165,9 @@ if ($recentImages): ?>
                     </td>
                     <td>
                         <a href="?delete_image_id=<?= $image['image_id'] ?>" 
-                            onclick="return confirm('Are you sure you want to delete this image?')" 
+                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')" 
                             style="color: red; text-decoration: none; background-color: #f8d7da; padding: 5px 10px; border-radius: 5px;">
-                            ❌ Delete
+                            ❌ Supprimer
                         </a>
                     </td>
                 </tr>
@@ -177,7 +175,7 @@ if ($recentImages): ?>
         </tbody>
     </table>
 <?php else: ?>
-    <p>No recent images found.</p>
+    <p>Aucune image récente trouvée.</p>
 <?php endif; ?>
 
 </body>
