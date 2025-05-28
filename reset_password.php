@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isHTML(true);
         $mail->Subject = 'Demande de réinitialisation du mot de passe';
         $mail->Body = 'Cliquez sur ce lien pour réinitialiser votre mot de passe : <a href="http://localhost/myprojet/reset_password_form.php?token=' . $token . '">Réinitialiser le mot de passe</a>';
-
         $mail->send();
         echo 'Le lien de réinitialisation du mot de passe a été envoyé à votre adresse email.';
     } catch (Exception $e) {
